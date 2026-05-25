@@ -1,6 +1,6 @@
 # DevBox Keep Awake
 
-DevBox Keep Awake is a .NET 10 Windows tray application that keeps one or more configured processes alive while mouse activity is detected.
+DevBox Keep Awake is a .NET 10 Windows tray application that keeps one or more configured processes alive while mouse activity is detected. This is helpful when the owners of the DevBox infrastructure are watching for those processes to decide whether or not to suspend or shutdown the DevBox instance.
 
 ## Behavior
 
