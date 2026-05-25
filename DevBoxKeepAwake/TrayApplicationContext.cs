@@ -46,6 +46,9 @@ internal sealed class TrayApplicationContext : ApplicationContext
 
         ValidateConfiguredTargetsOnStartup();
 
+        _logger.LogInfo("Starting configured keepalive targets during application startup.");
+        _keepAliveManager.EnsureTargetsRunning();
+
         _logger.LogInfo("Tray application initialized.");
     }
 

@@ -5,6 +5,7 @@
     <TargetFramework>net10.0-windows</TargetFramework>
     <AssemblyName>DevBoxKeepAwake</AssemblyName>
     <RootNamespace>DevBoxKeepAwake</RootNamespace>
+    <ApplicationIcon>app.ico</ApplicationIcon>
     <Product>DevBox Keep Awake</Product>
     <AssemblyTitle>DevBox Keep Awake</AssemblyTitle>
     <NeutralLanguage>en</NeutralLanguage>
