@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+
+  <data name="SettingsTitle" xml:space="preserve"><value>Einstellungen</value></data>
+  <data name="ButtonOk" xml:space="preserve"><value>OK</value></data>
+  <data name="ButtonCancel" xml:space="preserve"><value>Abbrechen</value></data>
+  <data name="MousePollLabel" xml:space="preserve"><value>Mausabfrage (Sek):</value></data>
+  <data name="CheckTimeLabel" xml:space="preserve"><value>Pruefzeit (Min):</value></data>
+  <data name="KeepaliveTargetsLabel" xml:space="preserve"><value>Keepalive Ziele:</value></data>
+  <data name="ColumnName" xml:space="preserve"><value>Name</value></data>
+  <data name="ColumnFileName" xml:space="preserve"><value>Dateiname</value></data>
+  <data name="ColumnProcessName" xml:space="preserve"><value>Prozessname</value></data>
+  <data name="ColumnEnabled" xml:space="preserve"><value>Aktiv</value></data>
+  <data name="ButtonAddTarget" xml:space="preserve"><value>Ziel hinzufuegen</value></data>
+  <data name="ButtonEditTarget" xml:space="preserve"><value>Ziel bearbeiten</value></data>
+  <data name="ButtonDeleteTarget" xml:space="preserve"><value>Ziel loeschen</value></data>
+  <data name="AutoProcessName" xml:space="preserve"><value>(auto)</value></data>
+  <data name="SelectTargetToEditMessage" xml:space="preserve"><value>Bitte ein Ziel zum Bearbeiten waehlen.</value></data>
+  <data name="SelectTargetToDeleteMessage" xml:space="preserve"><value>Bitte ein Ziel zum Loeschen waehlen.</value></data>
+  <data name="SelectTargetCaption" xml:space="preserve"><value>Ziel auswaehlen</value></data>
+  <data name="ConfirmDeleteMessage" xml:space="preserve"><value>Soll '{0}' wirklich geloescht werden?</value></data>
+  <data name="ConfirmDeleteCaption" xml:space="preserve"><value>Loeschen bestaetigen</value></data>
+  <data name="ErrorCaption" xml:space="preserve"><value>Fehler</value></data>
+  <data name="ErrorSavingSettingsMessage" xml:space="preserve"><value>Fehler beim Speichern der Einstellungen: {0}</value></data>
+  <data name="TargetEditTitle" xml:space="preserve"><value>Ziel bearbeiten</value></data>
+  <data name="TargetNameLabel" xml:space="preserve"><value>Name:</value></data>
+  <data name="TargetFileNameLabel" xml:space="preserve"><value>Dateiname:</value></data>
+  <data name="TargetArgumentsLabel" xml:space="preserve"><value>Argumente:</value></data>
+  <data name="TargetProcessNameLabel" xml:space="preserve"><value>Prozessname:</value></data>
+  <data name="TargetWorkingDirLabel" xml:space="preserve"><value>Arbeitsordner:</value></data>
+  <data name="TargetEnabledLabel" xml:space="preserve"><value>Aktiv:</value></data>
+  <data name="CreateNoWindowLabel" xml:space="preserve"><value>Ohne Fenster starten</value></data>
+  <data name="FileNameRequiredMessage" xml:space="preserve"><value>Dateiname ist erforderlich.</value></data>
+  <data name="ValidationErrorCaption" xml:space="preserve"><value>Validierungsfehler</value></data>
+  <data name="DefaultTargetName" xml:space="preserve"><value>Ziel</value></data>
+  <data name="ErrorSavingTargetMessage" xml:space="preserve"><value>Fehler beim Speichern des Ziels: {0}</value></data>
+  <data name="MenuSettings" xml:space="preserve"><value>Einstellungen</value></data>
+  <data name="MenuOpenConfig" xml:space="preserve"><value>Konfig oeffnen</value></data>
+  <data name="MenuOpenLog" xml:space="preserve"><value>Log oeffnen</value></data>
+  <data name="MenuOpenLogsFolder" xml:space="preserve"><value>Logordner oeffnen</value></data>
+  <data name="MenuExit" xml:space="preserve"><value>Beenden</value></data>
+  <data name="StatusActive" xml:space="preserve"><value>aktiv</value></data>
+  <data name="StatusIdle" xml:space="preserve"><value>inaktiv</value></data>
+  <data name="NotifyIconStatusFormat" xml:space="preserve"><value>{0} - {1}</value></data>
+</root>

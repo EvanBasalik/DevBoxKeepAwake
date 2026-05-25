@@ -1,0 +1,109 @@
+name: Build DevBox Keep Awake
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    tags:
+      - "v*"
+
+permissions:
+  contents: read
+
+jobs:
+  build-windows:
+    runs-on: windows-latest
+    env:
+      BUILD_DATE: ${{ github.run_id }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "10.0.x"
+
+      - name: Restore
+        run: dotnet restore DevBoxKeepAwake/DevBoxKeepAwake.csproj
+
+      - name: Compute version metadata
+        id: version
+        shell: pwsh
+        run: |
+          $ref = "${{ github.ref }}"
+          $sha = "${{ github.sha }}"
+          $shortSha = $sha.Substring(0, 7)
+          $buildDate = Get-Date -Format "yyyyMMdd"
+
+          if ($ref -like 'refs/tags/v*') {
+            $version = $ref.Substring('refs/tags/v'.Length)
+          } else {
+            $version = "0.0.0"
+          }
+
+          if (-not ($version -match '^[0-9]+\.[0-9]+\.[0-9]+$')) {
+            throw "Tag version '$version' is invalid. Expected semantic version like v1.2.3."
+          }
+
+          $informational = "$version+$buildDate.sha$shortSha"
+
+          "version=$version" >> $env:GITHUB_OUTPUT
+          "informational=$informational" >> $env:GITHUB_OUTPUT
+
+      - name: Publish (Release, win-x64)
+        run: >-
+          dotnet publish DevBoxKeepAwake/DevBoxKeepAwake.csproj
+          -c Release
+          -r win-x64
+          --self-contained false
+          /p:ContinuousIntegrationBuild=true
+          /p:Version=${{ steps.version.outputs.version }}
+          /p:FileVersion=${{ steps.version.outputs.version }}
+          /p:AssemblyVersion=${{ steps.version.outputs.version }}
+          /p:InformationalVersion=${{ steps.version.outputs.informational }}
+
+      - name: Prepare release and symbol packages
+        shell: pwsh
+        run: |
+          $publishDir = Join-Path $PWD "DevBoxKeepAwake/bin/Release/net10.0-windows/win-x64/publish"
+          $releaseDir = Join-Path $PWD "artifacts/release"
+          $symbolsDir = Join-Path $PWD "artifacts/symbols"
+
+          Remove-Item -Recurse -Force "artifacts" -ErrorAction SilentlyContinue
+          New-Item -ItemType Directory -Path $releaseDir | Out-Null
+          New-Item -ItemType Directory -Path $symbolsDir | Out-Null
+
+          Copy-Item -Path (Join-Path $publishDir "*") -Destination $releaseDir -Recurse -Force
+
+          # Keep symbols available for debugging, but out of the release package.
+          Get-ChildItem -Path $releaseDir -Filter *.pdb -Recurse | ForEach-Object {
+            $relative = $_.FullName.Substring($releaseDir.Length).TrimStart('\\')
+            $symbolTarget = Join-Path $symbolsDir $relative
+            $symbolTargetDir = Split-Path $symbolTarget -Parent
+            New-Item -ItemType Directory -Path $symbolTargetDir -Force | Out-Null
+            Copy-Item -Path $_.FullName -Destination $symbolTarget -Force
+            Remove-Item -Path $_.FullName -Force
+          }
+
+          Compress-Archive -Path (Join-Path $releaseDir "*") -DestinationPath (Join-Path $PWD "artifacts/DevBoxKeepAwake-win-x64.zip") -Force
+
+          if (Get-ChildItem -Path $symbolsDir -Recurse -File) {
+            Compress-Archive -Path (Join-Path $symbolsDir "*") -DestinationPath (Join-Path $PWD "artifacts/DevBoxKeepAwake-win-x64-symbols.zip") -Force
+          }
+
+      - name: Upload release artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: DevBoxKeepAwake-win-x64
+          path: artifacts/DevBoxKeepAwake-win-x64.zip
+          if-no-files-found: error
+
+      - name: Upload symbol artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: DevBoxKeepAwake-win-x64-symbols
+          path: artifacts/DevBoxKeepAwake-win-x64-symbols.zip
+          if-no-files-found: warn

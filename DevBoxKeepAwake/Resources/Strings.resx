@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+
+  <data name="SettingsTitle" xml:space="preserve"><value>Settings</value></data>
+  <data name="ButtonOk" xml:space="preserve"><value>OK</value></data>
+  <data name="ButtonCancel" xml:space="preserve"><value>Cancel</value></data>
+  <data name="MousePollLabel" xml:space="preserve"><value>Mouse Poll (sec):</value></data>
+  <data name="CheckTimeLabel" xml:space="preserve"><value>Check Time (min):</value></data>
+  <data name="KeepaliveTargetsLabel" xml:space="preserve"><value>Keepalive Targets:</value></data>
+  <data name="ColumnName" xml:space="preserve"><value>Name</value></data>
+  <data name="ColumnFileName" xml:space="preserve"><value>File Name</value></data>
+  <data name="ColumnProcessName" xml:space="preserve"><value>Process Name</value></data>
+  <data name="ColumnEnabled" xml:space="preserve"><value>Enabled</value></data>
+  <data name="ButtonAddTarget" xml:space="preserve"><value>Add Target</value></data>
+  <data name="ButtonEditTarget" xml:space="preserve"><value>Edit Target</value></data>
+  <data name="ButtonDeleteTarget" xml:space="preserve"><value>Delete Target</value></data>
+  <data name="AutoProcessName" xml:space="preserve"><value>(auto)</value></data>
+  <data name="SelectTargetToEditMessage" xml:space="preserve"><value>Please select a target to edit.</value></data>
+  <data name="SelectTargetToDeleteMessage" xml:space="preserve"><value>Please select a target to delete.</value></data>
+  <data name="SelectTargetCaption" xml:space="preserve"><value>Select Target</value></data>
+  <data name="ConfirmDeleteMessage" xml:space="preserve"><value>Are you sure you want to delete '{0}'?</value></data>
+  <data name="ConfirmDeleteCaption" xml:space="preserve"><value>Confirm Delete</value></data>
+  <data name="ErrorCaption" xml:space="preserve"><value>Error</value></data>
+  <data name="ErrorSavingSettingsMessage" xml:space="preserve"><value>Error saving settings: {0}</value></data>
+
+  <data name="TargetEditTitle" xml:space="preserve"><value>Edit Target</value></data>
+  <data name="TargetNameLabel" xml:space="preserve"><value>Name:</value></data>
+  <data name="TargetFileNameLabel" xml:space="preserve"><value>File Name:</value></data>
+  <data name="TargetArgumentsLabel" xml:space="preserve"><value>Arguments:</value></data>
+  <data name="TargetProcessNameLabel" xml:space="preserve"><value>Process Name:</value></data>
+  <data name="TargetWorkingDirLabel" xml:space="preserve"><value>Working Dir:</value></data>
+  <data name="TargetEnabledLabel" xml:space="preserve"><value>Enabled:</value></data>
+  <data name="CreateNoWindowLabel" xml:space="preserve"><value>Create No Window</value></data>
+  <data name="FileNameRequiredMessage" xml:space="preserve"><value>File Name is required.</value></data>
+  <data name="ValidationErrorCaption" xml:space="preserve"><value>Validation Error</value></data>
+  <data name="DefaultTargetName" xml:space="preserve"><value>Target</value></data>
+  <data name="ErrorSavingTargetMessage" xml:space="preserve"><value>Error saving target: {0}</value></data>
+
+  <data name="MenuSettings" xml:space="preserve"><value>Settings</value></data>
+  <data name="MenuOpenConfig" xml:space="preserve"><value>Open config</value></data>
+  <data name="MenuOpenLog" xml:space="preserve"><value>Open log</value></data>
+  <data name="MenuOpenLogsFolder" xml:space="preserve"><value>Open logs folder</value></data>
+  <data name="MenuExit" xml:space="preserve"><value>Exit</value></data>
+  <data name="StatusActive" xml:space="preserve"><value>active</value></data>
+  <data name="StatusIdle" xml:space="preserve"><value>idle</value></data>
+  <data name="NotifyIconStatusFormat" xml:space="preserve"><value>{0} - {1}</value></data>
+
+  <data name="SettingsFormAccessibleName" xml:space="preserve"><value>Settings Window</value></data>
+  <data name="SettingsFormAccessibleDescription" xml:space="preserve"><value>Configure polling intervals and keepalive targets.</value></data>
+  <data name="MousePollAccessibleName" xml:space="preserve"><value>Mouse Poll Seconds</value></data>
+  <data name="MousePollAccessibleDescription" xml:space="preserve"><value>How often to sample mouse activity in seconds.</value></data>
+  <data name="CheckTimeAccessibleName" xml:space="preserve"><value>Activity Evaluation Minutes</value></data>
+  <data name="CheckTimeAccessibleDescription" xml:space="preserve"><value>How often to evaluate activity in minutes.</value></data>
+  <data name="TargetsGridAccessibleName" xml:space="preserve"><value>Keepalive Targets</value></data>
+  <data name="TargetsGridAccessibleDescription" xml:space="preserve"><value>List of configured keepalive targets.</value></data>
+  <data name="AddTargetAccessibleName" xml:space="preserve"><value>Add Target</value></data>
+  <data name="AddTargetAccessibleDescription" xml:space="preserve"><value>Create a new keepalive target.</value></data>
+  <data name="EditTargetAccessibleName" xml:space="preserve"><value>Edit Target</value></data>
+  <data name="EditTargetAccessibleDescription" xml:space="preserve"><value>Edit the selected keepalive target.</value></data>
+  <data name="DeleteTargetAccessibleName" xml:space="preserve"><value>Delete Target</value></data>
+  <data name="DeleteTargetAccessibleDescription" xml:space="preserve"><value>Delete the selected keepalive target.</value></data>
+
+  <data name="TargetEditAccessibleName" xml:space="preserve"><value>Target Editor Window</value></data>
+  <data name="TargetEditAccessibleDescription" xml:space="preserve"><value>Edit properties for a keepalive target.</value></data>
+  <data name="TargetNameAccessibleName" xml:space="preserve"><value>Target Name</value></data>
+  <data name="TargetNameAccessibleDescription" xml:space="preserve"><value>Friendly name of the target.</value></data>
+  <data name="FileNameAccessibleName" xml:space="preserve"><value>Executable File Name</value></data>
+  <data name="FileNameAccessibleDescription" xml:space="preserve"><value>Executable path or file name to run.</value></data>
+  <data name="ArgumentsAccessibleName" xml:space="preserve"><value>Arguments</value></data>
+  <data name="ArgumentsAccessibleDescription" xml:space="preserve"><value>Command line arguments passed to the target process.</value></data>
+  <data name="ProcessNameAccessibleName" xml:space="preserve"><value>Process Name</value></data>
+  <data name="ProcessNameAccessibleDescription" xml:space="preserve"><value>Optional process name to monitor.</value></data>
+  <data name="WorkingDirAccessibleName" xml:space="preserve"><value>Working Directory</value></data>
+  <data name="WorkingDirAccessibleDescription" xml:space="preserve"><value>Optional working directory for launching the process.</value></data>
+  <data name="EnabledAccessibleName" xml:space="preserve"><value>Enabled</value></data>
+  <data name="EnabledAccessibleDescription" xml:space="preserve"><value>Enable or disable this target.</value></data>
+  <data name="CreateNoWindowAccessibleName" xml:space="preserve"><value>Create No Window</value></data>
+  <data name="CreateNoWindowAccessibleDescription" xml:space="preserve"><value>Run the target without showing a console window.</value></data>
+
+  <data name="TargetsUnavailableWarningFormat" xml:space="preserve"><value>Unavailable targets: {0}</value></data>
+  <data name="TargetsUnavailableDialogFormat" xml:space="preserve"><value>Some configured targets are unavailable: {0}</value></data>
+  <data name="TargetAvailabilityCaption" xml:space="preserve"><value>Target Availability Warning</value></data>
+  <data name="ProtectedPythonDeleteMessage" xml:space="preserve"><value>You cannot delete the only remaining python.exe target. Add another target first.</value></data>
+  <data name="ProtectedTargetCaption" xml:space="preserve"><value>Protected Target</value></data>
+  <data name="PythonInstallPromptMessage" xml:space="preserve"><value>Python is required for the configured python.exe target but was not found. Install Python now?</value></data>
+  <data name="PythonInstallSuccessMessage" xml:space="preserve"><value>Python was detected after installation.</value></data>
+  <data name="PythonInstallFailedMessage" xml:space="preserve"><value>Python could not be detected after installation attempt.</value></data>
+  <data name="PythonInstallErrorMessage" xml:space="preserve"><value>Python installation failed: {0}</value></data>
+</root>
