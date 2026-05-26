@@ -12,12 +12,15 @@ internal sealed class TrayApplicationContext : ApplicationContext
     private readonly KeepAliveManager _keepAliveManager;
     private readonly NotifyIcon _notifyIcon;
     private readonly System.Windows.Forms.Timer _timer;
+    private readonly Control _uiDispatcher;
+    private SettingsForm? _settingsForm;
 
     private NativePoint _lastCursorPosition;
     private DateTimeOffset _lastEvaluation = DateTimeOffset.UtcNow;
     private bool _mouseMovedSinceLastEvaluation;
     private bool _evaluationInProgress;
     private bool _pythonInstallPrompted;
+    private bool _isDisposing;
 
     public TrayApplicationContext(AppSettings settings, string configPath, FileLogger logger)
     {
@@ -36,6 +39,7 @@ internal sealed class TrayApplicationContext : ApplicationContext
             Visible = true,
             ContextMenuStrip = BuildContextMenu(),
         };
+        _notifyIcon.DoubleClick += OnNotifyIconDoubleClick;
 
         _timer = new System.Windows.Forms.Timer
         {
@@ -43,6 +47,9 @@ internal sealed class TrayApplicationContext : ApplicationContext
         };
         _timer.Tick += OnTimerTick;
         _timer.Start();
+
+        _uiDispatcher = new Control();
+        _uiDispatcher.CreateControl();
 
         ValidateConfiguredTargetsOnStartup();
 
@@ -56,14 +63,19 @@ internal sealed class TrayApplicationContext : ApplicationContext
     {
         if (disposing)
         {
+            _isDisposing = true;
+
             _timer.Stop();
             _timer.Tick -= OnTimerTick;
             _timer.Dispose();
 
             _keepAliveManager.DisposeOwnedTargets();
 
+            _notifyIcon.DoubleClick -= OnNotifyIconDoubleClick;
             _notifyIcon.Visible = false;
             _notifyIcon.Dispose();
+
+            _uiDispatcher.Dispose();
         }
 
         base.Dispose(disposing);
@@ -128,12 +140,56 @@ internal sealed class TrayApplicationContext : ApplicationContext
         return menu;
     }
 
-    private void ShowSettingsForm()
+    private void OnNotifyIconDoubleClick(object? sender, EventArgs e)
     {
+        ShowSettingsForm();
+    }
+
+    internal void OpenSettingsFromExternalRequest()
+    {
+        if (_isDisposing || _uiDispatcher.IsDisposed)
+        {
+            return;
+        }
+
         try
         {
-            using var form = new SettingsForm(_settings, _configPath, _logger, SaveSettingsAsync);
-            if (form.ShowDialog() == DialogResult.OK)
+            if (_uiDispatcher.InvokeRequired)
+            {
+                _uiDispatcher.BeginInvoke(new Action(OpenSettingsFromExternalRequest));
+                return;
+            }
+
+            ShowSettingsForm();
+        }
+        catch (ObjectDisposedException)
+        {
+            // Ignore late signal during shutdown.
+        }
+        catch (InvalidOperationException)
+        {
+            // Ignore late signal when dispatcher handle is unavailable.
+        }
+    }
+
+    private void ShowSettingsForm()
+    {
+        if (_settingsForm is not null && !_settingsForm.IsDisposed)
+        {
+            if (_settingsForm.WindowState == FormWindowState.Minimized)
+            {
+                _settingsForm.WindowState = FormWindowState.Normal;
+            }
+
+            _settingsForm.BringToFront();
+            _settingsForm.Activate();
+            return;
+        }
+
+        try
+        {
+            _settingsForm = new SettingsForm(_settings, _configPath, _logger, SaveSettingsAsync);
+            if (_settingsForm.ShowDialog() == DialogResult.OK)
             {
                 ApplySettings();
             }
@@ -141,6 +197,14 @@ internal sealed class TrayApplicationContext : ApplicationContext
         catch (Exception ex)
         {
             _logger.LogError("Error opening settings form.", ex);
+        }
+        finally
+        {
+            if (_settingsForm is not null)
+            {
+                _settingsForm.Dispose();
+                _settingsForm = null;
+            }
         }
     }
 
