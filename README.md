@@ -34,6 +34,7 @@ Example:
   "AutoStart": true,
   "MousePollSeconds": 5,
   "ActivityEvaluationMinutes": 5,
+  "LogRetentionDays": 7,
   "Targets": [
     {
       "Name": "Python",
@@ -47,6 +48,8 @@ Example:
   ]
 }
 ```
+
+`LogRetentionDays` controls how many daily log files are kept in the logs directory. Set it to `0` to disable automatic cleanup.
 
 The example uses Python for simplicity, but `Targets` can point to any executable. `ProcessName` should match the name Windows shows for the running process without `.exe`.
 

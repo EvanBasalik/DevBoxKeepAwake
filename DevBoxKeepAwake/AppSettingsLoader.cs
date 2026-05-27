@@ -26,6 +26,7 @@ internal static class AppSettingsLoader
 
             settings.MousePollSeconds = Math.Max(1, settings.MousePollSeconds);
             settings.ActivityEvaluationMinutes = Math.Max(1, settings.ActivityEvaluationMinutes);
+            settings.LogRetentionDays = Math.Max(0, settings.LogRetentionDays);
             settings.Targets = settings.Targets
                 .Where(target => !string.IsNullOrWhiteSpace(target.FileName))
                 .ToList();

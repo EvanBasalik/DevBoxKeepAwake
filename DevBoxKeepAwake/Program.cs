@@ -23,6 +23,7 @@ internal static class Program
 
         using var logger = new FileLogger(AppPaths.LogDirectory);
         var settings = AppSettingsLoader.Load(configPath, logger);
+        logger.SetRetentionDays(settings.LogRetentionDays);
 
         logger.LogInfo($"Starting {AppConstants.DisplayName}.");
         logger.LogInfo($"Configuration path: {configPath}");

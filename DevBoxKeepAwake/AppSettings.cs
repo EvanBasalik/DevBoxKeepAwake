@@ -8,6 +8,8 @@ internal sealed class AppSettings
 
     public int ActivityEvaluationMinutes { get; set; } = 5;
 
+    public int LogRetentionDays { get; set; } = 7;
+
     public List<KeepAliveTargetSettings> Targets { get; set; } = [CreateDefaultPythonTarget()];
 
     internal static KeepAliveTargetSettings CreateDefaultPythonTarget()
