@@ -6,7 +6,7 @@ internal sealed class AppSettings
 
     public int MousePollSeconds { get; set; } = 5;
 
-    public int ActivityEvaluationMinutes { get; set; } = 5;
+    public int ActivityEvaluationMinutes { get; set; } = 30;
 
     public int LogRetentionDays { get; set; } = 7;
 
